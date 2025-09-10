@@ -5,38 +5,88 @@
   text-align: center;
 }
 
-.logo {
-  height: 6em;
-  padding: 1.5em;
-  will-change: filter;
-  transition: filter 300ms;
-}
-.logo:hover {
-  filter: drop-shadow(0 0 2em #646cffaa);
-}
-.logo.react:hover {
-  filter: drop-shadow(0 0 2em #61dafbaa);
+/* Basic layout overrides for annotation editor */
+.annotation-root {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  padding: 1rem;
+  font-family: system-ui, sans-serif;
 }
 
-@keyframes logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.toolbar {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  align-items: center;
+  background: #1f2330;
+  padding: 0.5rem 0.75rem;
+  border: 1px solid #333a4d;
+  border-radius: 6px;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  a:nth-of-type(2) .logo {
-    animation: logo-spin infinite 20s linear;
-  }
+.toolbar button.active {
+  background: #3556d4;
+  color: #fff;
+  box-shadow: 0 0 0 1px #4f6ee0 inset;
 }
 
-.card {
-  padding: 2em;
+.icon-btn {
+  width: 34px;
+  height: 34px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0;
+  background: #252a36;
+  border: 1px solid #3a4152;
+  border-radius: 4px;
+  color: #c9d1e1;
+}
+.icon-btn:hover:not(:disabled) {
+  background: #2f3644;
+}
+.icon-btn.active {
+  background: #3556d4;
+  border-color: #4f6ee0;
+  color: #fff;
 }
 
-.read-the-docs {
-  color: #888;
+.toolbar input[type="range"] {
+  width: 150px;
+}
+
+html, body, #root { height: 100%; }
+
+.canvas-wrapper {
+  position: relative;
+  border: 1px solid #333a4d;
+  height: calc(100vh - 260px);
+  min-height: 500px;
+  max-height: 90vh;
+  overflow: auto;
+  background: #888; /* changed to gray background */
+}
+
+.annotation-svg {
+  user-select: none;
+  background: transparent;
+  width: 100%;
+  height: 100%;
+  display: block; /* remove inline-gap */
+}
+
+.info-panel {
+  font-size: 0.85rem;
+  line-height: 1.2rem;
+  color: #ccc;
+  background: #1b1e27;
+  padding: 0.75rem;
+  border-radius: 6px;
+  border: 1px solid #333a4d;
+}
+
+button:disabled {
+  opacity: 0.4;
+  cursor: not-allowed;
 }
